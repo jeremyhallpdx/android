@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
 
-                    if (charsRead > 0) {
+                    if (charsRead > 0) { // if the BufferedReader reads data...
 
                         // overloaded method to append the inputBuffer array into the StringBuilder
                         // 1st arg is the sub-array to append.  2nd is the starting element of subarray.  3rd is number of chars to append.
