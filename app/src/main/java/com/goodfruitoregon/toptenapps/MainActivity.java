@@ -7,7 +7,6 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: Starting AsyncTask");
         DownloadData dlData = new DownloadData();
-        dlData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml");
+        dlData.execute(getResources().getString(R.string.top_ten_rss_url));
         Log.d(TAG, "onCreate: Done");
     }
 
@@ -83,12 +82,16 @@ public class MainActivity extends AppCompatActivity {
                     if (charsRead > 0) { // if the BufferedReader reads data...
 
                         // overloaded method to append the inputBuffer array into the StringBuilder
-                        // 1st arg is the sub-array to append.  2nd is the starting element of subarray.  3rd is number of chars to append.
+                        // 1st arg is the sub-array to append to append into.
+                        // 2nd is the starting element of subarray.
+                        // 3rd is number of chars to append.
                         xmlResult.append(String.copyValueOf(inputBuffer, 0, charsRead));
                     }
                 }
 
                 bufferedReader.close(); // closes the connection and all resources associated with it
+
+                return xmlResult.toString();  // returns the xml data for parsing.
             }
 
             catch (MalformedURLException e) {
@@ -101,6 +104,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "downloadXML: Error Reading Data: " + e.getMessage());
             }
 
+            catch (SecurityException e) {
+
+                Log.e(TAG, "downloadXML: Security Exception. Needs permissions. " + e.getMessage());
+            }
+
+            return null;  // return null if exceptions are caught.
         }
     }
 }
