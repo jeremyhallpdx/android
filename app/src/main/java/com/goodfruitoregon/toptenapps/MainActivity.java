@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             ParseApplications parser = new ParseApplications();
             parser.parse(s);
 
-            ArrayAdapter<FeedEntry> adapter = new ArrayAdapter<FeedEntry>(MainActivity.this, R.layout.list_item, parser.getApplications());
+            FeedAdapter adapter = new FeedAdapter(MainActivity.this, R.layout.list_record, parser.getApplications());
             listApps.setAdapter(adapter);
         }
 
