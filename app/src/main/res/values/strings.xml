@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TopTenApps</string>
     <string name="top_ten_rss_url">"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml"</string>
+    <string name="textView_artist">Artist</string>
+    <string name="textView_name">Name</string>
+    <string name="textView_summary">Summary</string>
 </resources>
