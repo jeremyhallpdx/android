@@ -112,6 +112,12 @@ public class ParseApplications {
                 eventType = xpp.next();
             }
 
+            for (FeedEntry f : applications) {
+
+                Log.d(TAG, "********************");
+                Log.d(TAG, f.toString());
+            }
+
         }
 
         catch (Exception e) { // catches all exceptions and prints the stack trace to the log/console
