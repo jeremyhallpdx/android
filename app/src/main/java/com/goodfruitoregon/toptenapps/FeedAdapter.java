@@ -39,18 +39,43 @@ public class FeedAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        View view = layoutInflater.inflate(layoutResource, parent, false);  // create a view inflated by the inflater
-                                                                                        // pass the layout res file
-                                                                                        // inflates the "constraint layout" which contains the textView widgets
-        TextView tvName = view.findViewById(R.id.tvName);  // instantiate the views to be passed over to the listView
-        TextView tvArtist = view.findViewById(R.id.tvArtist);
-        TextView tvSummary = view.findViewById(R.id.tvSummary);
+        ViewHolder viewHolder;
+
+        if (convertView == null) {
+
+            convertView = layoutInflater.inflate(layoutResource, parent, false);  // create a view inflated by the inflater
+                                                                                            // pass the layout res file
+                                                                                            // inflates the "constraint layout" which contains the textView widgets
+
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        }
+
+        else {
+
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+
         FeedEntry currentApp = applications.get(position);  // retrieves a record from the data source
 
-        tvName.setText(currentApp.getName());  // sets the text in the views
-        tvArtist.setText(currentApp.getArtist());
-        tvSummary.setText(currentApp.getSummary());
+        viewHolder.tvName.setText(currentApp.getName());  // sets the text in the views
+        viewHolder.tvArtist.setText(currentApp.getArtist());
+        viewHolder.tvSummary.setText(currentApp.getSummary());
 
-        return view;  // returns the viewGroup to the listView to display the data
+        return convertView;  // returns the viewGroup to the listView to display the data
+    }
+
+    private class ViewHolder {
+
+        final TextView tvName;
+        final TextView tvArtist;
+        final TextView tvSummary;
+
+        ViewHolder(View v) {
+
+            this.tvName = v.findViewById(R.id.tvName);
+            this.tvArtist = v.findViewById(R.id.tvArtist);
+            this.tvSummary = v.findViewById(R.id.tvSummary);
+        }
     }
 }
