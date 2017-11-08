@@ -1,7 +1,5 @@
 package com.goodfruitoregon.toptenapps;
 
-import android.util.Log;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -52,13 +50,14 @@ public class ParseApplications {
 
                     case XmlPullParser.START_TAG:  // if it's a Start Tag...
 
-                        Log.d(TAG, "parse: Starting tag for: " + tagName);
+                        //Log.d(TAG, "parse: Starting tag for: " + tagName);
 
                         if("entry".equalsIgnoreCase(tagName)) { // if we get an entry tag
 
                             inEntry = true;  // flag we are in an entry_tag event
                             currentRecord = new FeedEntry();  // create a new record to store the data
                         }
+
                         break; // go to next parsing event
 
                     case XmlPullParser.TEXT:  // if we get a text event...
@@ -68,7 +67,7 @@ public class ParseApplications {
 
                     case XmlPullParser.END_TAG: // if we get an ending_tag event...
 
-                        Log.d(TAG, "parse: Ending tag for: " + tagName);
+                        //Log.d(TAG, "parse: Ending tag for: " + tagName);
 
                         if (inEntry) { // if we're in an entry tag then we can now save the record
 
@@ -112,11 +111,11 @@ public class ParseApplications {
                 eventType = xpp.next();
             }
 
-            for (FeedEntry f : applications) {
-
-                Log.d(TAG, "********************");
-                Log.d(TAG, f.toString());
-            }
+//            for (FeedEntry f : applications) {
+//
+//                Log.d(TAG, "********************");
+//                Log.d(TAG, f.toString());
+//            }
 
         }
 

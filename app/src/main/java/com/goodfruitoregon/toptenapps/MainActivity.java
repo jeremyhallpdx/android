@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
 
             super.onPostExecute(s);
-            Log.d(TAG, "onPostExecute: parameter is " + s);
+            //Log.d(TAG, "onPostExecute: parameter is " + s);
 
             ParseApplications parser = new ParseApplications();
             parser.parse(s);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
 
-            Log.d(TAG, "doInBackground: Starts with: " + strings[0]);
+            //Log.d(TAG, "doInBackground: Starts with: " + strings[0]);
 
             String rssFeed = downloadXML(strings[0]);
 
