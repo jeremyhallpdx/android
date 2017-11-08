@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -26,10 +28,60 @@ public class MainActivity extends AppCompatActivity {
 
         listApps = findViewById(R.id.xmllListView);
 
-        Log.d(TAG, "onCreate: Starting AsyncTask");
+        downloadURL(getResources().getString(R.string.top_ten_free_rss));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.feeds_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        String feedURL;
+
+        switch (id) {
+
+            case R.id.mnu_free:
+
+                feedURL = getResources().getString(R.string.top_ten_free_rss);
+                break;
+
+            case R.id.mnu_paid:
+
+                feedURL = getResources().getString(R.string.top_ten_paid_rss);
+                break;
+
+            case R.id.mnu_songs:
+
+                feedURL = getResources().getString(R.string.top_ten_songs_rss);
+                break;
+
+            default:
+
+                // do something...
+                return super.onOptionsItemSelected(item);
+
+        }
+
+        downloadURL(feedURL);
+
+        return true;
+    }
+
+    private void downloadURL(String feedURL) {
+
+        Log.d(TAG, "downloadURL: Starting AsyncTask");
         DownloadData dlData = new DownloadData();
-        dlData.execute(getResources().getString(R.string.top_ten_rss_url));
-        Log.d(TAG, "onCreate: Done");
+        dlData.execute(feedURL);
+        Log.d(TAG, "downloadURL: Done");
+
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {

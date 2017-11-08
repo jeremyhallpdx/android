@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mnu_free"
+        android:title="@string/mnu_free" />
+    <item
+        android:id="@+id/mnu_paid"
+        android:title="@string/mnu_paid" />
+    <item
+        android:id="@+id/mnu_songs"
+        android:title="@string/mnu_songs" />
+</menu>
