@@ -33,10 +33,22 @@ public class MainActivity extends AppCompatActivity {
         downloadURL(String.format(feedURL, feedLimit));
     }
 
+    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.feeds_menu, menu);
+
+        if (feedLimit == 10) {
+
+            menu.findItem(R.id.mnu_limit_10).setChecked(true);
+        }
+
+        else {
+
+            menu.findItem(R.id.mnu_limit_25).setChecked(true);
+        }
 
         return true;
     }
@@ -45,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
+        boolean refreshData = true;
 
         switch (id) {
 
@@ -75,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                 else {
 
+                    refreshData = false;
                     Log.d(TAG, "onOptionsItemSelected: " + item.getTitle() + " feedLimit unchanged");
                 }
 
@@ -86,7 +100,10 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);  // super returns false by default.
         }
 
-        downloadURL(String.format(feedURL, feedLimit));
+        if (refreshData) {
+
+            downloadURL(String.format(feedURL, feedLimit));
+        }
 
         return true;
     }
