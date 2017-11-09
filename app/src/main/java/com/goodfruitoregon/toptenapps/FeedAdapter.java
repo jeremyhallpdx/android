@@ -3,6 +3,7 @@ package com.goodfruitoregon.toptenapps;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +44,10 @@ public class FeedAdapter extends ArrayAdapter {
 
         if (convertView == null) {
 
+            Log.d(TAG, "getView: called with null convertView");
             convertView = layoutInflater.inflate(layoutResource, parent, false);  // create a view inflated by the inflater
-                                                                                            // pass the layout res file
-                                                                                            // inflates the "constraint layout" which contains the textView widgets
+                                                                                              // pass the layout res file
+                                                                                              // inflates the "constraint layout" which contains the textView widgets
 
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
@@ -53,6 +55,7 @@ public class FeedAdapter extends ArrayAdapter {
 
         else {
 
+            Log.d(TAG, "getView: provided a convertView");
             viewHolder = (ViewHolder) convertView.getTag();
         }
 

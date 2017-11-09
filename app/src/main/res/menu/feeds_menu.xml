@@ -21,4 +21,7 @@
             android:id="@+id/mnu_limit_25"
             android:title="@string/mnu_limit_25" />
     </group>
+    <item
+        android:id="@+id/mnu_refresh"
+        android:title="@string/mnu_referesh" />
 </menu>

@@ -11,4 +11,5 @@
     <string name="mnu_songs">Songs</string>
     <string name="mnu_limit_10">Top 10</string>
     <string name="mnu_limit_25">Top 25</string>
+    <string name="mnu_referesh">Refresh RSS Feed</string>
 </resources>
