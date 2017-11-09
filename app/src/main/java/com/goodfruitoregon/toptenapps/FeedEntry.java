@@ -6,18 +6,18 @@ package com.goodfruitoregon.toptenapps;
 
 public class FeedEntry {
 
-    private String name;
+    private String title;
     private String artist;
     private String releaseDate;
     private String summary;
     private String imageURL;
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String name) {
+        this.title = name;
     }
 
     public String getArtist() {
@@ -54,7 +54,7 @@ public class FeedEntry {
 
     @Override
     public String toString() {
-        return "name=" + name + '\n' +
+        return "title=" + title + '\n' +
                 ", artist=" + artist + '\n' +
                 ", releaseDate=" + releaseDate + '\n' +
                 ", imageURL=" + imageURL + '\n';

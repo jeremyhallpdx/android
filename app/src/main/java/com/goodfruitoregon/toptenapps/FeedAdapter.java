@@ -58,7 +58,7 @@ public class FeedAdapter extends ArrayAdapter {
 
         FeedEntry currentApp = applications.get(position);  // retrieves a record from the data source
 
-        viewHolder.tvName.setText(currentApp.getName());  // sets the text in the views
+        viewHolder.tvName.setText(currentApp.getTitle());  // sets the text in the views
         viewHolder.tvArtist.setText(currentApp.getArtist());
         viewHolder.tvSummary.setText(currentApp.getSummary());
 

@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private ListView listApps;
+    private String feedURL = "http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=%d/xml";
+    private int feedLimit = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         listApps = findViewById(R.id.xmllListView);
 
-        downloadURL(getResources().getString(R.string.top_ten_free_rss));
+        downloadURL(String.format(feedURL, feedLimit));
     }
 
     @Override
@@ -43,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
-        String feedURL;
 
         switch (id) {
 
@@ -63,14 +63,30 @@ public class MainActivity extends AppCompatActivity {
                 feedURL = getResources().getString(R.string.top_ten_songs_rss);
                 break;
 
+            case R.id.mnu_limit_10:
+            case R.id.mnu_limit_25:
+
+                if (!item.isChecked()) {
+
+                    item.setChecked(true);
+                    feedLimit = 35 - feedLimit;
+                    Log.d(TAG, "onOptionsItemSelected: " + item.getTitle() + " setting feed limit to: " + feedLimit);
+                }
+
+                else {
+
+                    Log.d(TAG, "onOptionsItemSelected: " + item.getTitle() + " feedLimit unchanged");
+                }
+
+                break;
+
             default:
 
                 // do something...
-                return super.onOptionsItemSelected(item);
-
+                return super.onOptionsItemSelected(item);  // super returns false by default.
         }
 
-        downloadURL(feedURL);
+        downloadURL(String.format(feedURL, feedLimit));
 
         return true;
     }
@@ -81,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         DownloadData dlData = new DownloadData();
         dlData.execute(feedURL);
         Log.d(TAG, "downloadURL: Done");
-
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
@@ -104,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
 
-            //Log.d(TAG, "doInBackground: Starts with: " + strings[0]);
+            Log.d(TAG, "doInBackground: Starts with: " + strings[0]);
 
             String rssFeed = downloadXML(strings[0]);
 

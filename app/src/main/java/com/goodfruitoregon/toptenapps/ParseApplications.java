@@ -77,9 +77,9 @@ public class ParseApplications {
                                 inEntry = false;  // set to false so we can find the next entry start_tag
                             }
 
-                            else if ("name".equalsIgnoreCase(tagName)) {  // if we are closing a name tag
+                            else if ("title".equalsIgnoreCase(tagName)) {  // if we are closing a name tag
 
-                                currentRecord.setName(textValue);  // store the name value
+                                currentRecord.setTitle(textValue);  // store the name value
                             }
 
                             else if ("artist".equalsIgnoreCase(tagName)) {  // if we are closing an artist tag

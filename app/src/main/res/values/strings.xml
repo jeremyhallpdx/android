@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">TopTenApps</string>
-    <string name="top_ten_free_rss">"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml"</string>
-    <string name="top_ten_paid_rss">"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/toppaidapplications/limit=10/xml"</string>
-    <string name="top_ten_songs_rss">"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topsongs/limit=10/xml"</string>
+    <string name="top_ten_free_rss">"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=%d/xml"</string>
+    <string name="top_ten_paid_rss">"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/toppaidapplications/limit=%d/xml"</string>
+    <string name="top_ten_songs_rss">"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topsongs/limit=%d/xml"</string>
     <string name="textView_artist">Artist</string>
-    <string name="textView_name">Name</string>
+    <string name="textView_title">Title</string>
     <string name="textView_summary">Summary</string>
     <string name="mnu_free">Free Apps</string>
     <string name="mnu_paid">Paid Apps</string>
     <string name="mnu_songs">Songs</string>
+    <string name="mnu_limit_10">Top 10</string>
+    <string name="mnu_limit_25">Top 25</string>
 </resources>
